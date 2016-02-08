@@ -46,6 +46,8 @@ setup_bdp() {
   #sed -i.back 's/storage_backend = bitcask/storage_backend = leveldb/' /etc/riak/riak.conf
   sed -i.back 's/leveldb.maximum_memory.percent = 70/leveldb.maximum_memory.percent = 30/' /etc/riak/riak.conf
   sed -i.back 's/## ring_size = 64/ring_size = 16/' /etc/riak/riak.conf
+  sed -i.back 's/127.0.0.1:8098/0.0.0.0:8098/' /etc/riak/riak.conf
+  sed -i.back 's/127.0.0.1:8087/0.0.0.0:8087/' /etc/riak/riak.conf
   service riak start
 }
 
