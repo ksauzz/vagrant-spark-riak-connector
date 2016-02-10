@@ -2,6 +2,8 @@
 
 . /vagrant/lib/utils.sh
 
+ADDRESS=$1
+
 BDP_VERSION=1.0.0
 SPARK_VERSION=1.4.1
 # FIXME change 1.1.0 or later after its release
@@ -48,6 +50,7 @@ setup_bdp() {
   sed -i.back 's/## ring_size = 64/ring_size = 16/' /etc/riak/riak.conf
   sed -i.back 's/127.0.0.1:8098/0.0.0.0:8098/' /etc/riak/riak.conf
   sed -i.back 's/127.0.0.1:8087/0.0.0.0:8087/' /etc/riak/riak.conf
+  sed -i.back "s/riak@127.0.0.1/riak@$ADDRESS/" /etc/riak/riak.conf
   service riak start
 }
 
